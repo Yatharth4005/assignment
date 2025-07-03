@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-1234-567890abcdef",
+		"name": "School Management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Add School",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Example School\",\n    \"address\": \"123 Education St, Learning City\",\n    \"latitude\": 12.9716,\n    \"longitude\": 77.5946\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/addSchool",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"addSchool"
+					]
+				},
+				"description": "Add a new school with name, address, and coordinates"
+			},
+			"response": []
+		},
+		{
+			"name": "List Schools",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/listSchools?latitude=12.9716&longitude=77.5946",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"listSchools"
+					],
+					"query": [
+						{
+							"key": "latitude",
+							"value": "12.9716",
+							"description": "User's latitude"
+						},
+						{
+							"key": "longitude",
+							"value": "77.5946",
+							"description": "User's longitude"
+						}
+					]
+				},
+				"description": "Get a list of all schools sorted by distance from the given coordinates"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

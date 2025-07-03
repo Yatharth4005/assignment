@@ -1,0 +1,58 @@
+{
+  "info": {
+    "_postman_id": "school-management-api-collection",
+    "name": "School Management API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Add School",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Green Valley School\",\n  \"address\": \"123 Main St, City\",\n  \"latitude\": 28.6139,\n  \"longitude\": 77.209\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/addSchool",
+          "host": ["{{base_url}}"],
+          "path": ["addSchool"]
+        }
+      },
+      "response": [
+        {
+          "code": 201,
+          "body": "{\n  \"message\": \"School added successfully\",\n  \"schoolId\": 1\n}"
+        }
+      ]
+    },
+    {
+      "name": "List Schools",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/listSchools?latitude=28.6139&longitude=77.209",
+          "host": ["{{base_url}}"],
+          "path": ["listSchools"],
+          "query": [
+            { "key": "latitude", "value": "28.6139" },
+            { "key": "longitude", "value": "77.209" }
+          ]
+        }
+      },
+      "response": [
+        {
+          "code": 200,
+          "body": "[\n  {\n    \"id\": 1,\n    \"name\": \"Green Valley School\",\n    \"address\": \"123 Main St, City\",\n    \"latitude\": 28.6139,\n    \"longitude\": 77.209,\n    \"distance\": 0\n  }\n]"
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3000" }
+  ]
+} 
